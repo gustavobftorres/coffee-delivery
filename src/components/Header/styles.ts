@@ -62,3 +62,19 @@ export const ShopButton = styled.button`
     background-color: ${(props) => props.theme['yellow']};
   }
 `
+export const PopUp = styled.div`
+  background-color: ${(props) => props.theme['yellow-dark']};
+  position: absolute;
+  top: 18px;
+  right: 80px;
+  padding: 10px;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: ${(props) => props.theme['white']};
+`
