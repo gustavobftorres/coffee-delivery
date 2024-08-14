@@ -14,7 +14,8 @@ export const InfoContainer = styled.div`
   padding: 2rem;
 
   p {
-    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
     line-height: 1.5;
     color: ${(props) => props.theme['base-subtitle']}
   }
@@ -24,6 +25,12 @@ export const InfoContainer = styled.div`
     gap: 1rem;
     align-items: center;
     font-size: 14px;
+  }
+
+  h1 {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 42px;
+    font-weight: bolder;
   }
 `
 
@@ -48,6 +55,7 @@ export const IconsContainer = styled.div`
   }
 
   h3 {
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     color: ${(props) => props.theme['base-text']};
     font-weight: normal;	
@@ -61,7 +69,8 @@ export const Title = styled.div`
   margin-left: 5rem;
   text-align: center;
   font-size: 20px;
-  color: ${(props) => props.theme['base-text']};
+  font-family: 'Baloo 2', sans-serif;
+  color: ${(props) => props.theme['base-title']};
 `
 
 export const CoffeeMenu = styled.div`

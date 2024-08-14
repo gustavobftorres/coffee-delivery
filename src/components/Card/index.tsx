@@ -1,9 +1,6 @@
-import { useState } from 'react';
-import { 
-  CardContainer,
-  TagContainer,
-  } from './styles';
-
+import { useState } from "react";
+import { CardContainer, TagContainer, ShopTimeButton } from "./styles";
+import ShoppingCartSimple from "../../assets/shoppingCartSimple.svg";
 interface CardProps {
   key: number;
   image: string;
@@ -17,7 +14,7 @@ export function Card(props: CardProps) {
 
   return (
     <CardContainer>
-      <img src={props.image} alt='placeholder' />
+      <img src={props.image} alt="placeholder" />
       <div>
         <h2>{props.title}</h2>
         <TagContainer>
@@ -26,30 +23,37 @@ export function Card(props: CardProps) {
         <p>{props.description}</p>
       </div>
 
-      <div className='price'>
-        <h4>R$ {props.price}</h4>
+      <div className="price">
+        <h4>
+          <p className="dolarSign">R$</p> 
+          {props.price}
+        </h4>
 
-        <div className='amount'>
-        <button onClick={() => {
-            if (amount > 0) {
-              setAmount(amount - 1);
-            }
-          }}>
+        <div className="amount">
+          <button className='subtract'
+            onClick={() => {
+              if (amount > 0) {
+                setAmount(amount - 1);
+              }
+            }}
+          >
             -
           </button>
 
-            <p>{amount}</p>
+          <p className="moneyAmount">{amount}</p>
 
-          <button onClick={() => {
-            setAmount(amount + 1);
-          }}>
+          <button className="sum"
+            onClick={() => {
+              setAmount(amount + 1);
+            }}
+          >
             +
           </button>
-
         </div>
-        <button>Add</button>
+        <ShopTimeButton className='shop'>
+          <img className='shopImage' src={ShoppingCartSimple} alt="cart" />
+        </ShopTimeButton>
       </div>
     </CardContainer>
-  )
+  );
 }
-
