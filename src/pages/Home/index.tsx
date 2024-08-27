@@ -1,4 +1,5 @@
 import { Header } from "../../components/Header";
+import { MenuContext } from "../../context/MenuContext";
 import {
   Container,
   InfoContainer,
@@ -28,6 +29,7 @@ import Cubano from "../../assets/cubano.svg";
 import Havaiano from "../../assets/havaiano.svg";
 import Arabe from "../../assets/arabe.svg";
 import Irlandes from "../../assets/irlandes.svg";
+import { useContext, useState } from "react";
 
 const cardData = [
   {
@@ -147,7 +149,24 @@ const cardData = [
     image: Irlandes,
   },
 ];
+
+type CoffeeCounts = {
+  [id: string]: number;
+}
 export function Home() {
+  // const { amount, setAmount } = useContext(MenuContext);
+  const [amounts, setAmounts] = useState<{ [key: number]: number}>({});
+  const [coffeeCounts, setCoffeeCounts] = useState<CoffeeCounts>({});
+
+  console.log(amounts);
+
+  const handleAmountChange = (id: number, amount: number) => {
+    setAmounts((prev) => ({
+      ...prev,
+      [id]: amount,
+    }))
+  }
+
   return (
     <>
       <Header />
@@ -177,7 +196,7 @@ export function Home() {
             </div>
           </IconsContainer>
           <IconsContainer>
-            <div className="main">
+            <div className="main2">
               <div>
                 <img src={clockIcon} alt="" />
                 <h3>Entrega rápida e rastreada</h3>
@@ -199,14 +218,16 @@ export function Home() {
 
       <CoffeeMenu>
         <CoffeeCards>
-          {cardData.map((card) => (
+          {cardData.map((coffee) => (
             <Card
-              key={card.id}
-              title={card.title}
-              tag={card.tag}
-              description={card.description}
-              price={card.price}
-              image={card.image}
+              key={coffee.id}
+              title={coffee.title}
+              tag={coffee.tag}
+              description={coffee.description}
+              price={coffee.price}
+              image={coffee.image}
+              amount={amounts[coffee.id] || 0}
+              onAmountChange={(amount) => handleAmountChange(coffee.id, amount)}
             />
           ))}
         </CoffeeCards>

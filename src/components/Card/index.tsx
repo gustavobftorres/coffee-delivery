@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
 import { CardContainer, TagContainer, ShopTimeButton } from "./styles";
 import ShoppingCartSimple from "../../assets/shoppingCartSimple.svg";
+import { MenuContext } from "../../context/MenuContext";
+
+type CoffeeCounts = {
+  [id: string]: number;
+}
 interface CardProps {
   key: number;
   image: string;
@@ -8,11 +13,21 @@ interface CardProps {
   tag: string;
   description: string;
   price: number;
+  amount: number;
+  onAmountChange: (amount: number) => void;
 }
 export function Card(props: CardProps) {
-  const [amount, setAmount] = useState(0);
+  // const { amount, setAmount } = useContext(MenuContext);
+  // const [amount, setAmount] = useState(0);
+  const handleIncrease = () => props.onAmountChange(props.amount + 1);
+  const handleDecrease = () => {
+    if (props.amount > 0) {
+      props.onAmountChange(props.amount - 1);
+    }
+  };
 
   return (
+
     <CardContainer>
       <img src={props.image} alt="placeholder" />
       <div>
@@ -31,21 +46,15 @@ export function Card(props: CardProps) {
 
         <div className="amount">
           <button className='subtract'
-            onClick={() => {
-              if (amount > 0) {
-                setAmount(amount - 1);
-              }
-            }}
+            onClick={handleDecrease}
           >
             -
           </button>
 
-          <p className="moneyAmount">{amount}</p>
+          <p className="moneyAmount">{props.amount}</p>
 
           <button className="sum"
-            onClick={() => {
-              setAmount(amount + 1);
-            }}
+            onClick={handleIncrease}
           >
             +
           </button>

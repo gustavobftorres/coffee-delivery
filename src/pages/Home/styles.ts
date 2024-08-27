@@ -6,18 +6,17 @@ export const Container = styled.div`
   align-items: center;
   gap: 2rem;
   margin-top: 5rem;
-`
+`;
 
 export const InfoContainer = styled.div`
-
   display: block;
   padding: 2rem;
 
   p {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 20px;
     line-height: 1.5;
-    color: ${(props) => props.theme['base-subtitle']}
+    color: ${(props) => props.theme["base-subtitle"]};
   }
 
   .info {
@@ -28,50 +27,57 @@ export const InfoContainer = styled.div`
   }
 
   h1 {
-    font-family: 'Baloo 2', sans-serif;
+    font-family: "Baloo 2", sans-serif;
     font-size: 42px;
     font-weight: bolder;
   }
-`
+`;
 
-export const LogoContainer = styled.div`
-
-`
+export const LogoContainer = styled.div``;
 
 export const IconsContainer = styled.div`
-  display: flex;
+  display: inline-block;
   gap: 1rem;
   align-items: center;
+  margin-right: 1rem;
 
   .main {
-    display: flex;
+    display: inline-block;
+    flex-direction: column;
     gap: 2rem;
+    /* background-color: ${(props) => props.theme["base-card"]}; */
+  }
+
+  .main2 {
+    display: inline-block;
+    flex-direction: column;
+    gap: 2rem;
+    /* background-color: green; */
   }
 
   div {
     display: flex;
     gap: 1rem;
-
   }
 
   h3 {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 14px;
-    color: ${(props) => props.theme['base-text']};
-    font-weight: normal;	
+    color: ${(props) => props.theme["base-text"]};
+    font-weight: normal;
   }
-`
+`;
 
 export const Title = styled.div`
   display: flex;
   margin-top: 5rem;
   margin-bottom: 3rem;
-  margin-left: 5rem;
+  margin-left: 22rem;
   text-align: center;
   font-size: 20px;
-  font-family: 'Baloo 2', sans-serif;
-  color: ${(props) => props.theme['base-title']};
-`
+  font-family: "Baloo 2", sans-serif;
+  color: ${(props) => props.theme["base-title"]};
+`;
 
 export const CoffeeMenu = styled.div`
   margin-left: 5rem;
@@ -80,7 +86,7 @@ export const CoffeeMenu = styled.div`
     margin-bottom: 5rem;
     text-align: center;
   }
-`
+`;
 
 export const CoffeeCards = styled.div`
   display: grid;
@@ -88,4 +94,4 @@ export const CoffeeCards = styled.div`
   gap: 1rem;
   align-items: center;
   justify-content: center;
-`
+`;
