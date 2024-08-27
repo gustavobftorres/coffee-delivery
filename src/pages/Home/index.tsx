@@ -158,7 +158,9 @@ export function Home() {
   const [amounts, setAmounts] = useState<{ [key: number]: number}>({});
   const [coffeeCounts, setCoffeeCounts] = useState<CoffeeCounts>({});
 
-  console.log(amounts);
+
+  const totalItems = Object.values(amounts).reduce((sum, amount) => sum + amount, 0);
+  console.log(typeof(totalItems));
 
   const handleAmountChange = (id: number, amount: number) => {
     setAmounts((prev) => ({
@@ -169,7 +171,9 @@ export function Home() {
 
   return (
     <>
-      <Header />
+      <Header 
+      amount={totalItems}
+      />
       <Container>
         <InfoContainer>
           <div>

@@ -10,10 +10,16 @@ import logo from "../../assets/logo.svg";
 import locationPin from "../../assets/location-pin.svg";
 import yellowCart from "../../assets/yellow-cart-icon.svg";
 import { useNavigate, useLocation } from "react-router-dom";
-export function Header() {
+
+interface HeaderProps {
+  amount: number;
+}
+export function Header(props: HeaderProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const currentPath = location.pathname;
+
+
 
   return (
     <HeaderContainer>
@@ -32,7 +38,9 @@ export function Header() {
           }}
         >
           <img src={yellowCart} alt="" />
-          {currentPath === "/checkout" && <PopUp>3</PopUp>}
+          {props.amount > 0 && (
+            <PopUp>{props.amount}</PopUp>
+          )}
         </ShopButton>
       </ButtonsDiv>
     </HeaderContainer>
