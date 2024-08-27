@@ -16,8 +16,7 @@ interface HeaderProps {
 }
 export function Header(props: HeaderProps) {
   const navigate = useNavigate();
-  const location = useLocation();
-  const currentPath = location.pathname;
+  // const location = useLocation();
 
 
 

@@ -14,6 +14,7 @@ interface CardProps {
   description: string;
   price: number;
   amount: number;
+  quantity?: number;
   onAmountChange: (amount: number) => void;
 }
 export function Card(props: CardProps) {

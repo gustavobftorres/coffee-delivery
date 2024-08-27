@@ -150,30 +150,27 @@ const cardData = [
   },
 ];
 
-type CoffeeCounts = {
-  [id: string]: number;
-}
+// type CoffeeCounts = {
+//   [id: string]: number;
+// }
+
 export function Home() {
-  // const { amount, setAmount } = useContext(MenuContext);
-  const [amounts, setAmounts] = useState<{ [key: number]: number}>({});
-  const [coffeeCounts, setCoffeeCounts] = useState<CoffeeCounts>({});
+  const { amounts, setAmounts, totalItems } = useContext(MenuContext);
+  // const [amounts, setAmounts] = useState<{ [key: number]: number}>({});
+  // const [coffeeCounts, setCoffeeCounts] = useState<CoffeeCounts>({});
 
-
-  const totalItems = Object.values(amounts).reduce((sum, amount) => sum + amount, 0);
-  console.log(typeof(totalItems));
+  console.log(amounts);
 
   const handleAmountChange = (id: number, amount: number) => {
     setAmounts((prev) => ({
       ...prev,
       [id]: amount,
-    }))
-  }
+    }));
+  };
 
   return (
     <>
-      <Header 
-      amount={totalItems}
-      />
+      <Header amount={totalItems} />
       <Container>
         <InfoContainer>
           <div>
