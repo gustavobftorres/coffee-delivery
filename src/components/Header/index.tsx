@@ -23,7 +23,9 @@ export function Header(props: HeaderProps) {
   return (
     <HeaderContainer>
       <LogoDiv>
-        <img src={logo} alt="" />
+        <img src={logo} alt="" onClick={() => {
+          navigate("/");
+        }} />
       </LogoDiv>
       <ButtonsDiv>
         <LocationButton type="button">
