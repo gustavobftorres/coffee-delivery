@@ -9,15 +9,13 @@ import {
 import logo from "../../assets/logo.svg";
 import locationPin from "../../assets/location-pin.svg";
 import yellowCart from "../../assets/yellow-cart-icon.svg";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   amount: number;
 }
 export function Header(props: HeaderProps) {
   const navigate = useNavigate();
-  // const location = useLocation();
-
 
 
   return (

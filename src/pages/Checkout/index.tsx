@@ -13,7 +13,7 @@ import pin from "../../assets/pin-adress-yellow.svg"
 import payment from "../../assets/payment-icon.svg"
 
 export function Checkout() {
-  const { amounts, setAmounts, totalItems } = useContext(MenuContext);
+  const { totalItems } = useContext(MenuContext);
 
   return (
     <>
