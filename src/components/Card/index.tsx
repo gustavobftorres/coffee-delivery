@@ -1,34 +1,59 @@
-import { Dispatch, SetStateAction, useContext, useState } from "react";
+import {
+  useState
+} from "react";
 import { CardContainer, TagContainer, ShopTimeButton } from "./styles";
 import ShoppingCartSimple from "../../assets/shoppingCartSimple.svg";
-import { MenuContext } from "../../context/MenuContext";
+import { useMenu } from "../../context/MenuContext";
 
-type CoffeeCounts = {
-  [id: string]: number;
-}
 interface CardProps {
-  key: number;
+  id: number;  // Add this to receive the id
   image: string;
   title: string;
   tag: string;
   description: string;
   price: number;
-  amount: number;
   quantity?: number;
-  onAmountChange: (amount: number) => void;
 }
 export function Card(props: CardProps) {
-  // const { amount, setAmount } = useContext(MenuContext);
-  // const [amount, setAmount] = useState(0);
-  const handleIncrease = () => props.onAmountChange(props.amount + 1);
+  // const { handleAddToCart, coffeItems } = useContext(MenuContext);
+  const { addToCart, getQuantity } = useMenu()
+  const [quantity, setQuantity] = useState(getQuantity(props.id));
+
+  const handleIncrease = () => {
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+
+    // Add or update the coffee in the cart with the correct id and quantity
+    addToCart({
+      id: props.id,  // Use props.id here
+      title: props.title,
+      tag: props.tag,
+      description: props.description,
+      price: props.price,
+      image: props.image,
+      quantity: 1,  // Increase by 1
+    });
+  };
+
   const handleDecrease = () => {
-    if (props.amount > 0) {
-      props.onAmountChange(props.amount - 1);
+    if (quantity > 0) {
+      const newQuantity = quantity - 1;
+      setQuantity(newQuantity);
+
+      // Subtract the item from the cart
+      addToCart({
+        id: props.id,  // Use props.id here
+        title: props.title,
+        tag: props.tag,
+        description: props.description,
+        price: props.price,
+        image: props.image,
+        quantity: -1,  // Decrease by 1
+      });
     }
   };
 
   return (
-
     <CardContainer>
       <img src={props.image} alt="placeholder" />
       <div>
@@ -41,27 +66,29 @@ export function Card(props: CardProps) {
 
       <div className="price">
         <h4>
-          <p className="dolarSign">R$</p> 
+          <p className="dolarSign">R$</p>
           {props.price}
         </h4>
 
         <div className="amount">
-          <button className='subtract'
+          <button
+            className="subtract"
             onClick={handleDecrease}
           >
             -
           </button>
 
-          <p className="moneyAmount">{props.amount}</p>
+          <p className="moneyAmount">{quantity}</p>
 
-          <button className="sum"
+          <button
+            className="sum"
             onClick={handleIncrease}
           >
             +
           </button>
         </div>
-        <ShopTimeButton className='shop'>
-          <img className='shopImage' src={ShoppingCartSimple} alt="cart" />
+        <ShopTimeButton className="shop">
+          <img className="shopImage" src={ShoppingCartSimple} alt="cart" />
         </ShopTimeButton>
       </div>
     </CardContainer>

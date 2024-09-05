@@ -1,5 +1,4 @@
 import { Header } from "../../components/Header";
-import { MenuContext } from "../../context/MenuContext";
 import {
   Container,
   InfoContainer,
@@ -29,7 +28,8 @@ import Cubano from "../../assets/cubano.svg";
 import Havaiano from "../../assets/havaiano.svg";
 import Arabe from "../../assets/arabe.svg";
 import Irlandes from "../../assets/irlandes.svg";
-import { useContext, useState } from "react";
+import { useMenu } from "../../context/MenuContext";
+
 
 const cardData = [
   {
@@ -150,27 +150,14 @@ const cardData = [
   },
 ];
 
-// type CoffeeCounts = {
-//   [id: string]: number;
-// }
-
 export function Home() {
-  const { amounts, setAmounts, totalItems } = useContext(MenuContext);
-  // const [amounts, setAmounts] = useState<{ [key: number]: number}>({});
-  // const [coffeeCounts, setCoffeeCounts] = useState<CoffeeCounts>({});
+  const { coffeItems } = useMenu()
 
-  console.log(amounts);
-
-  const handleAmountChange = (id: number, amount: number) => {
-    setAmounts((prev) => ({
-      ...prev,
-      [id]: amount,
-    }));
-  };
+  console.log(coffeItems);
 
   return (
     <>
-      <Header amount={totalItems} />
+      <Header amount={coffeItems.length} />
       <Container>
         <InfoContainer>
           <div>
@@ -218,20 +205,19 @@ export function Home() {
       </Title>
 
       <CoffeeMenu>
-        <CoffeeCards>
-          {cardData.map((coffee) => (
-            <Card
-              key={coffee.id}
-              title={coffee.title}
-              tag={coffee.tag}
-              description={coffee.description}
-              price={coffee.price}
-              image={coffee.image}
-              amount={amounts[coffee.id] || 0}
-              onAmountChange={(amount) => handleAmountChange(coffee.id, amount)}
-            />
-          ))}
-        </CoffeeCards>
+          <CoffeeCards>
+            {cardData.map((coffee) => (
+              <Card
+                key={coffee.id} // This is just for React's internal use
+                id={coffee.id}  // Explicitly pass the id as a prop
+                title={coffee.title}
+                tag={coffee.tag}
+                description={coffee.description}
+                price={coffee.price}
+                image={coffee.image}
+              />
+            ))}
+          </CoffeeCards>
       </CoffeeMenu>
     </>
   );

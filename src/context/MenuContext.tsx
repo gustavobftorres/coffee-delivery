@@ -1,13 +1,19 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
+
+interface CoffeeItem {
+  id: number;
+  title: string;
+  tag: string;
+  description: string;
+  price: number;
+  image: string;
+  quantity: number; // Add a quantity field to track how much the user clicked
+}
 
 interface MenuContextType {
-  amounts: { [key: number]: number }; // The structure of amounts
-  setAmounts: (
-    amounts:
-      | { [key: number]: number }
-      | ((prev: { [key: number]: number }) => { [key: number]: number })
-  ) => void; // The function to set amounts
-  totalItems: number; // The total number of items in the cart
+  coffeItems: CoffeeItem[];
+  addToCart: (item: CoffeeItem) => void;
+  getQuantity: (id: number) => number; // Add a method to get the quantity of a specific item in the cart.
 }
 
 export const MenuContext = createContext({} as MenuContextType);
@@ -17,16 +23,36 @@ interface MenuContextProviderProps {
 }
 
 export function MenuContextProvider({ children }: MenuContextProviderProps) {
-  const [amounts, setAmounts] = useState<{ [key: number]: number }>({});
+  const [coffeItems, setCoffeItems] = useState<CoffeeItem[]>([]);
 
-  const totalItems = Object.values(amounts).reduce(
-    (sum, amount) => sum + amount,
-    0
-  );
+  const addToCart = (newItem: CoffeeItem) => {
+    setCoffeItems((prevItems) => {
+      const itemExists = prevItems.find(item => item.id === newItem.id);
+      if (itemExists) {
+        // Update the quantity of the existing item
+        return prevItems.map(item =>
+          item.id === newItem.id
+            ? { ...item, quantity: item.quantity + newItem.quantity }
+            : item
+        );
+      } else {
+        // Add new item to cart with the selected quantity
+        return [...prevItems, { ...newItem }];
+      }
+    });
+  };
+
+  const getQuantity = (id: number) => {
+    const item = coffeItems.find((item) => item.id === id);
+    return item ? item.quantity : 0;
+  };
+
 
   return (
-    <MenuContext.Provider value={{ amounts, setAmounts, totalItems }}>
+    <MenuContext.Provider value={{ coffeItems, addToCart, getQuantity }}>
       {children}
     </MenuContext.Provider>
   );
 }
+
+export const useMenu = () => useContext(MenuContext);
