@@ -19,6 +19,8 @@ export function Card(props: CardProps) {
   const { addToCart, getQuantity } = useMenu()
   const [quantity, setQuantity] = useState(getQuantity(props.id));
 
+  // console.log(props)
+
   const handleIncrease = () => {
     const newQuantity = quantity + 1;
     setQuantity(newQuantity);
@@ -67,7 +69,7 @@ export function Card(props: CardProps) {
       <div className="price">
         <h4>
           <p className="dolarSign">R$</p>
-          {props.price}
+          {props.price}0
         </h4>
 
         <div className="amount">

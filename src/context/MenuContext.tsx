@@ -29,6 +29,12 @@ export function MenuContextProvider({ children }: MenuContextProviderProps) {
     setCoffeItems((prevItems) => {
       const itemExists = prevItems.find(item => item.id === newItem.id);
       if (itemExists) {
+
+        // If the quantity is 0, remove the item from the cart
+      if (itemExists.quantity + newItem.quantity === 0) {
+        return prevItems.filter(item => item.id !== newItem.id);
+      }
+      
         // Update the quantity of the existing item
         return prevItems.map(item =>
           item.id === newItem.id

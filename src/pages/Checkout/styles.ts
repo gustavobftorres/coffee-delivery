@@ -105,6 +105,11 @@ export const CartContainer = styled.div`
     /* background-color: blue */
   }
 
+  hr {
+    width: 90%;
+    margin-bottom: 1rem;
+  }
+
   .price-div {
     display: flex;
     width: 20%;
@@ -130,12 +135,50 @@ export const CartContainer = styled.div`
     /* margin-top: 1rem; */
   }
 
+  .final-info-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.1rem;
+    /* margin-top: 2rem; */
+  }
+
+  .submit-button {
+    background-color: ${(props) => props.theme["yellow"]};
+    color: ${(props) => props.theme["white"]};
+    padding: 0.8rem 1rem;
+    border-radius: 0.3rem;
+    /* border-color: ${(props) => props.theme["base-button"]};
+    border-style: solid; */
+    border: none;
+    width: 90%;
+    cursor: pointer;
+
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 22px;
+    text-align: center;
+  }
+
   h2 {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 16px;
-    /* background-color: red; */
   }
+
+  h4 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    margin-top: 0;
+  }
+
 
   img {
     width: 60px;

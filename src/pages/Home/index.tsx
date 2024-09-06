@@ -37,7 +37,7 @@ const cardData = [
     title: "Expresso Tradicional",
     tag: "Tradicional",
     description: "O tradicional café feito com água quente e grãos moídos",
-    price: 9.9,
+    price: 9.90,
     image: ExpressoTradicional,
   },
   {
@@ -45,7 +45,7 @@ const cardData = [
     title: "Expresso Americano",
     tag: "Tradicional",
     description: "Expresso diluído, menos intenso que o tradicional",
-    price: 9.9,
+    price: 9.90,
     image: ExpressoAmericano,
   },
   {
@@ -53,7 +53,7 @@ const cardData = [
     title: "Expresso Cremoso",
     tag: "Tradicional",
     description: "Café expresso tradicional com espuma cremosa",
-    price: 9.9,
+    price: 9.90,
     image: ExpressoCremoso,
   },
   {
@@ -61,7 +61,7 @@ const cardData = [
     title: "Expresso Gelado",
     tag: "Tradicional",
     description: "Bebida preparada com café expresso e cubos de gelo",
-    price: 9.9,
+    price: 9.90,
     image: ExpressoGelado,
   },
   {
@@ -69,7 +69,7 @@ const cardData = [
     title: "Café com Leite",
     tag: "Tradicional",
     description: "Meio a meio de expresso tradicional com leite vaporizado",
-    price: 9.9,
+    price: 9.90,
     image: CafeComLeite,
   },
   {
@@ -78,7 +78,7 @@ const cardData = [
     tag: "Tradicional",
     description:
       "Uma dose de café expresso com o dobro de leite e espuma cremosa",
-    price: 9.9,
+    price: 9.90,
     image: Latte,
   },
   {
@@ -87,7 +87,7 @@ const cardData = [
     tag: "Tradicional",
     description:
       "Bebida com canela feita de doses iguais de café, leite e espuma",
-    price: 9.9,
+    price: 9.90,
     image: Cappucino,
   },
   {
@@ -96,7 +96,7 @@ const cardData = [
     tag: "Tradicional",
     description:
       "Café expresso misturado com um pouco de leite quente e espuma",
-    price: 9.9,
+    price: 9.90,
     image: Macchiato,
   },
   {
@@ -104,7 +104,7 @@ const cardData = [
     title: "Moccacino",
     tag: "Tradicional",
     description: "Café expresso com calda de chocolate, pouco leite e espuma",
-    price: 9.9,
+    price: 9.90,
     image: Moccacino,
   },
   {
@@ -112,7 +112,7 @@ const cardData = [
     title: "Chocolate Quente",
     tag: "Tradicional",
     description: "Bebida feita com chocolate dissolvido no leite quente e café",
-    price: 9.9,
+    price: 9.90,
     image: ChocolateQuente,
   },
   {
@@ -121,7 +121,7 @@ const cardData = [
     tag: "Tradicional",
     description:
       "Drink gelado de café expresso com rum, creme de leite e hortelã",
-    price: 9.9,
+    price: 9.90,
     image: Cubano,
   },
   {
@@ -129,7 +129,7 @@ const cardData = [
     title: "Havaiano",
     tag: "Tradicional",
     description: "Bebida adocicada preparada com café e leite de coco",
-    price: 9.9,
+    price: 9.90,
     image: Havaiano,
   },
   {
@@ -137,7 +137,7 @@ const cardData = [
     title: "Árabe",
     tag: "Tradicional",
     description: "Bebida preparada com grãos de café árabe e especiarias",
-    price: 9.9,
+    price: 9.90,
     image: Arabe,
   },
   {
@@ -145,7 +145,7 @@ const cardData = [
     title: "Irlandês",
     tag: "Tradicional",
     description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
-    price: 9.9,
+    price: 9.90,
     image: Irlandes,
   },
 ];
