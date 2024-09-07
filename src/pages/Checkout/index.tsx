@@ -168,7 +168,10 @@ export function Checkout() {
                           </button>
                         </div>
                         <div className="remove-button-container">
-                          <button className="remove" onClick={() => handleRemove(coffee.id)}>
+                          <button
+                            className="remove"
+                            onClick={() => handleRemove(coffee.id)}
+                          >
                             <img src={trash} alt="" />
                             <h4>REMOVER</h4>
                           </button>
@@ -176,7 +179,7 @@ export function Checkout() {
                       </div>
                     </div>
                     <div className="price-div">
-                      <p>R$ {coffee.price}0</p>
+                      <p>R$ {coffee.price}</p>
                     </div>
                   </div>
                   <hr />
@@ -186,9 +189,18 @@ export function Checkout() {
               <p>Your cart is empty.</p>
             )}
             <div className="final-info-div">
-              <h4>Total de itens {coffeItems.length}</h4>
-              <h4>Frete: {deliverPrice}0</h4>
-              <h1>Total: R$ {totalPrice}0</h1>
+              <div className="info">
+                <div className="info-titles">
+                  <h4>Total de itens</h4>
+                  <h4>Entrega</h4>
+                  <h1>Total</h1>
+                </div>
+                <div className="info-numbers">
+                  <h4>R$ {totalItemsPrice}</h4>
+                  <h4>R$ {deliverPrice}</h4>
+                  <h1>R$ {totalPrice}</h1>
+                </div>
+              </div>
               <button className="submit-button" type="submit">
                 Finalizar pedido
               </button>

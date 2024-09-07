@@ -89,10 +89,11 @@ export const FormsContainer = styled.div`
 export const CartContainer = styled.div`
   background-color: #f5f5f5;
   display: flex;
-  width: 40%;
+  width: 27rem;
   border-radius: 0.3rem;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
 
   border-top-right-radius: 3rem;
   border-bottom-left-radius: 3rem;
@@ -100,9 +101,7 @@ export const CartContainer = styled.div`
   div {
     display: flex;
     flex-direction: row;
-    width: 85%;
-    align-items: center;
-    /* background-color: blue */
+    width: 90%;
   }
 
   hr {
@@ -187,12 +186,12 @@ export const CartContainer = styled.div`
     width: 20%;
     text-align: right;
     justify-content: flex-end;
-    /* background-color: green; */
+    margin-right: 1rem;
 
     p {
       font-size: 1rem;
       font-family: "Roboto", sans-serif;
-      font-weight: 400;
+      font-weight: 500;
       color: ${(props) => props.theme["base-subtitle"]};
     }
   }
@@ -217,10 +216,31 @@ export const CartContainer = styled.div`
   .final-info-div {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     gap: 0.1rem;
     /* margin-top: 2rem; */
+
+    .info {
+    }
+
+    .info-titles {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: start;
+      font-size: 1rem;
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      color: ${(props) => props.theme["base-subtitle"]};
+
+    }
+
+    .info-numbers {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      text-align: end;
+    }
   }
 
   .submit-button {
@@ -243,7 +263,6 @@ export const CartContainer = styled.div`
   h1 {
     font-family: "Baloo 2", sans-serif;
     font-size: 22px;
-    text-align: center;
   }
 
   h2 {
@@ -253,10 +272,14 @@ export const CartContainer = styled.div`
   }
 
   h4 {
+    font-size: 14px;
     font-family: "Roboto", sans-serif;
     font-weight: 300;
-    margin-top: 0;
+    margin: 0.5rem;
+    margin-left: 0rem;
+    margin-right: 0rem;
   }
+
 
   img {
     width: 60px;
