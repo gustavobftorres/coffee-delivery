@@ -72,7 +72,7 @@ export const Title = styled.div`
   display: flex;
   margin-top: 5rem;
   margin-bottom: 3rem;
-  margin-left: 22rem;
+  margin-left: 12rem;
   text-align: center;
   font-size: 20px;
   font-family: "Baloo 2", sans-serif;

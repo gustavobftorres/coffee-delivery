@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Page = styled.div`
-  margin-left: 5rem;
-  margin-right: 5rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
 
   .boxes-separation {
     display: flex;
@@ -100,7 +100,7 @@ export const CartContainer = styled.div`
   div {
     display: flex;
     flex-direction: row;
-    width: 90%;
+    width: 85%;
     align-items: center;
     /* background-color: blue */
   }
@@ -108,14 +108,93 @@ export const CartContainer = styled.div`
   hr {
     width: 90%;
     margin-bottom: 1rem;
+    border-color: #f5f5f5;
+    border-width: 0.2px;
   }
 
+  .amount {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+    height: 2rem;
+    gap: 0.3rem;
+
+    background-color: ${(props) => props.theme["base-hover"]};
+    border-radius: 6px;
+
+    font-size: 1.2rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+
+    width: 22%;
+
+    .subtract {
+      font-size: 16px;
+      border: none;
+      background-color: transparent;
+      color: ${(props) => props.theme["purple"]};
+    }
+
+    .sum {
+      font-size: 16px;
+      border: none;
+      background-color: transparent;
+      color: ${(props) => props.theme["purple"]};
+    }
+  }
+
+  .remove-button-container {
+    display: flex;
+    /* width: 10%; */
+    border-radius: 6px;
+    font-size: 1.2rem;
+    border: none;
+    background-color: transparent;
+    color: ${(props) => props.theme["purple"]};
+
+    button {
+      display: flex;
+      border: none;
+      background-color: ${(props) => props.theme["base-hover"]};
+      /* background-color: green; */
+      align-items: center;
+      padding: 0rem;
+      border-radius: 6px;
+      padding-right: 0.5rem;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+      margin: 0.4rem;
+    }
+
+    h4 {
+      padding: 0;
+      margin: 0;
+      font-size: 0.8rem;
+      color: ${(props) => props.theme["base-subtitle"]};
+
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+    }
+  }
   .price-div {
     display: flex;
     width: 20%;
     text-align: right;
     justify-content: flex-end;
     /* background-color: green; */
+
+    p {
+      font-size: 1rem;
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      color: ${(props) => props.theme["base-subtitle"]};
+    }
   }
 
   .title-div {
@@ -179,7 +258,6 @@ export const CartContainer = styled.div`
     margin-top: 0;
   }
 
-
   img {
     width: 60px;
     height: 60px;
@@ -219,7 +297,6 @@ export const PaymentContainer = styled.div`
     margin-top: 1rem;
     /* background-color: green; */
     align-items: center;
-
   }
 
   .payment-button {
@@ -237,5 +314,4 @@ export const PaymentContainer = styled.div`
 
     background-color: ${(props) => props.theme["base-button"]};
   }
-
-`
+`;

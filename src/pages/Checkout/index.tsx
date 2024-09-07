@@ -12,45 +12,70 @@ import creditCard from "../../assets/credit-card-icon.svg";
 import debitCard from "../../assets/debit-card-icon.svg";
 import cash from "../../assets/cash-icon.svg";
 import { useMenu } from "../../context/MenuContext";
-import { useState } from "react";
-import { Card } from "../../components/Card";
+import trash from "../../assets/trash-icon.svg";
 
 export function Checkout() {
-  const { coffeItems, getQuantity, addToCart } = useMenu();
-  const [quantity, setQuantity] = useState(getQuantity(coffeItems));
+  const { coffeItems, addToCart } = useMenu();
+
+  const handleQuantityIncrease = (id: number) => {
+    coffeItems.map((coffe) => {
+      if (coffe.id === id) {
+        addToCart({
+          id: coffe.id,
+          title: coffe.title,
+          tag: coffe.tag,
+          description: coffe.description,
+          price: coffe.price,
+          image: coffe.image,
+          quantity: 1,
+        });
+      }
+    });
+  };
+
+  const handleQuantityDecrease = (id: number) => {
+    coffeItems.map((coffe) => {
+      if (coffe.id === id) {
+        addToCart({
+          id: coffe.id,
+          title: coffe.title,
+          tag: coffe.tag,
+          description: coffe.description,
+          price: coffe.price,
+          image: coffe.image,
+          quantity: -1,
+        });
+      }
+    });
+  };
+
+  const handleRemove = (id: number) => {
+    coffeItems.map((coffe) => {
+      if (coffe.id === id) {
+        console.log(coffe.quantity);
+        addToCart({
+          id: coffe.id,
+          title: coffe.title,
+          tag: coffe.tag,
+          description: coffe.description,
+          price: coffe.price,
+          image: coffe.image,
+          quantity: -coffe.quantity,
+        });
+      }
+    });
+  };
 
   console.log(coffeItems);
-
-  const handleIncrease = () => {
-    coffeItems.map((coffe) => console.log(coffe));
-  };
 
   const totalItemsPrice = coffeItems.reduce(
     (acc, coffe) => acc + coffe.price * coffe.quantity,
     0
   );
 
-  const deliverPrice = 3.5
+  const deliverPrice = 3.5;
 
   const totalPrice = totalItemsPrice + deliverPrice;
-
-  // const handleDecrease = () => {
-  //   if (quantity > 0) {
-  //     const newQuantity = quantity - 1;
-  //     setQuantity(newQuantity);
-
-  //     // Subtract the item from the cart
-  //     addToCart({
-  //       id: props.id,  // Use props.id here
-  //       title: props.title,
-  //       tag: props.tag,
-  //       description: props.description,
-  //       price: props.price,
-  //       image: props.image,
-  //       quantity: -1,  // Decrease by 1
-  //     });
-  //   }
-  // };
 
   return (
     <>
@@ -125,8 +150,29 @@ export function Checkout() {
                     <div className="title-div">
                       <h2>{coffee.title}</h2>
                       <div className="button-div">
-                        <button onClick={handleIncrease} />
-                        <button />
+                        <div className="amount">
+                          <button
+                            className="subtract"
+                            onClick={() => handleQuantityDecrease(coffee.id)}
+                          >
+                            -
+                          </button>
+
+                          <p className="moneyAmount">{coffee.quantity}</p>
+
+                          <button
+                            className="sum"
+                            onClick={() => handleQuantityIncrease(coffee.id)}
+                          >
+                            +
+                          </button>
+                        </div>
+                        <div className="remove-button-container">
+                          <button className="remove" onClick={() => handleRemove(coffee.id)}>
+                            <img src={trash} alt="" />
+                            <h4>REMOVER</h4>
+                          </button>
+                        </div>
                       </div>
                     </div>
                     <div className="price-div">
@@ -143,7 +189,9 @@ export function Checkout() {
               <h4>Total de itens {coffeItems.length}</h4>
               <h4>Frete: {deliverPrice}0</h4>
               <h1>Total: R$ {totalPrice}0</h1>
-              <button className="submit-button" type="submit">Finalizar pedido</button>
+              <button className="submit-button" type="submit">
+                Finalizar pedido
+              </button>
             </div>
           </CartContainer>
         </div>
