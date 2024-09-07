@@ -5,8 +5,17 @@ export const Page = styled.div`
   margin-right: 10rem;
 
   .boxes-separation {
+    justify-content: space-between;
+  }
+
+  .forms-payment-container {
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.3rem;
+    border-radius: 0.3rem;
+    width: 60%;
+    float: left;
+    margin-right: 0.3rem;
   }
 `;
 
@@ -25,12 +34,14 @@ export const Title = styled.div`
 `;
 
 export const FormsContainer = styled.div`
+  flex: 1;
   background-color: #f5f5f5;
   line-height: 0.8;
   border-radius: 0.3rem;
   padding: 1rem;
-  width: 60%;
+  width: 90%;
   padding-bottom: 2rem;
+  height: 20%;
 
   h2 {
     font-family: "Roboto", sans-serif;
@@ -87,6 +98,7 @@ export const FormsContainer = styled.div`
 `;
 
 export const CartContainer = styled.div`
+  /* flex: 1; */
   background-color: #f5f5f5;
   display: flex;
   width: 27rem;
@@ -232,7 +244,6 @@ export const CartContainer = styled.div`
       font-family: "Roboto", sans-serif;
       font-weight: 400;
       color: ${(props) => props.theme["base-subtitle"]};
-
     }
 
     .info-numbers {
@@ -280,7 +291,6 @@ export const CartContainer = styled.div`
     margin-right: 0rem;
   }
 
-
   img {
     width: 60px;
     height: 60px;
@@ -292,10 +302,11 @@ export const CartContainer = styled.div`
 
 export const PaymentContainer = styled.div`
   background-color: #f5f5f5;
-  width: 58%;
+  width: 90%;
   border-radius: 0.3rem;
   padding: 1rem;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 
   h2 {
     font-family: "Roboto", sans-serif;
@@ -316,7 +327,7 @@ export const PaymentContainer = styled.div`
 
   .payment-buttons {
     display: flex;
-    gap: 5rem;
+    gap: 3rem;
     margin-top: 1rem;
     /* background-color: green; */
     align-items: center;
@@ -335,6 +346,28 @@ export const PaymentContainer = styled.div`
     font-family: "Roboto", sans-serif;
     font-weight: 300;
 
-    background-color: ${(props) => props.theme["base-button"]};
+    &:hover {
+      background-color: ${(props) => props.theme["purple-light"]};
+    }
   }
+
+  .active {
+      display: flex;
+      width: 300px;
+      height: 50px;
+      border-radius: 0.3rem;
+      border: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+
+      font-family: "Roboto", sans-serif;
+      font-weight: 300;
+
+      background-color: ${(props) => props.theme["purple-light"]};
+      border: 1px solid ${(props) => props.theme["purple"]};
+      border-color: ${(props) => props.theme["purle"]};
+    }
 `;
+
+

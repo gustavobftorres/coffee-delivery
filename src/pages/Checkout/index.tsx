@@ -13,9 +13,15 @@ import debitCard from "../../assets/debit-card-icon.svg";
 import cash from "../../assets/cash-icon.svg";
 import { useMenu } from "../../context/MenuContext";
 import trash from "../../assets/trash-icon.svg";
+import { useState } from "react";
 
 export function Checkout() {
   const { coffeItems, addToCart } = useMenu();
+  const [activeButton, setActiveButton] = useState(0);
+
+  const handleButtonClick = (id: number) => {
+    setActiveButton(id);
+  };
 
   const handleQuantityIncrease = (id: number) => {
     coffeItems.map((coffe) => {
@@ -92,54 +98,95 @@ export function Checkout() {
         </Title>
 
         <div className="boxes-separation">
-          <FormsContainer>
-            <div>
-              <div className="adress-title">
-                <img src={pin} alt="" />
-                <h2>Endereço de entrega</h2>
+          <div className="forms-payment-container">
+            <FormsContainer>
+              <div>
+                <div className="adress-title">
+                  <img src={pin} alt="" />
+                  <h2>Endereço de entrega</h2>
+                </div>
+                <h4>Informe o endereço onde deseja receber o pedido</h4>
               </div>
-              <h4>Informe o endereço onde deseja receber o pedido</h4>
-            </div>
 
-            <div className="input-container">
-              <input type="number" placeholder="CEP" />
-            </div>
+              <div className="input-container">
+                <input type="number" placeholder="CEP" />
+              </div>
 
-            <div className="input-container">
-              <input className="adress-input" type="text" placeholder="Rua" />
-            </div>
+              <div className="input-container">
+                <input className="adress-input" type="text" placeholder="Rua" />
+              </div>
 
-            <div className="input-container">
-              <input
-                className="adress-number-input"
-                type="number"
-                placeholder="Número"
-              />
-              <input
-                className="adress-input"
-                type="text"
-                placeholder="Complemento"
-              />
-            </div>
+              <div className="input-container">
+                <input
+                  className="adress-number-input"
+                  type="number"
+                  placeholder="Número"
+                />
+                <input
+                  className="adress-input"
+                  type="text"
+                  placeholder="Complemento"
+                />
+              </div>
 
-            <div className="input-container">
-              <input
-                className="adress-bairro-input"
-                type="text"
-                placeholder="Bairro"
-              />
-              <input
-                className="adress-city-input"
-                type="text"
-                placeholder="Cidade"
-              />
-              <input
-                className="adress-state-input"
-                type="text"
-                placeholder="SC"
-              />
-            </div>
-          </FormsContainer>
+              <div className="input-container">
+                <input
+                  className="adress-bairro-input"
+                  type="text"
+                  placeholder="Bairro"
+                />
+                <input
+                  className="adress-city-input"
+                  type="text"
+                  placeholder="Cidade"
+                />
+                <input
+                  className="adress-state-input"
+                  type="text"
+                  placeholder="SC"
+                />
+              </div>
+            </FormsContainer>
+
+            <PaymentContainer>
+              <div>
+                <div className="payment-title">
+                  <img src={payment} alt="" />
+                  <h2>Endereço de entrega</h2>
+                </div>
+                <h4>
+                  O pagamento é feito na entrega. Escolha a forma que deseja
+                  pagar
+                </h4>
+              </div>
+              <div className="payment-buttons">
+                <button
+                  type="submit"
+                  className={activeButton === 1 ? "active" : "payment-button"}
+                  onClick={() => handleButtonClick(1)}
+                >
+                  <img src={creditCard} alt="" />
+                  CARTÃO DE CRÉDITO
+                </button>
+                <button
+                  type="submit"
+                  className={activeButton === 2 ? "active" : "payment-button"}
+                  onClick={() => handleButtonClick(2)}
+                >
+                  <img src={debitCard} alt="" />
+                  CARTÃO DE DÉBITO
+                </button>
+                <button
+                  type="submit"
+                  className={activeButton === 3 ? "active" : "payment-button"}
+                  onClick={() => handleButtonClick(3)}
+                >
+                  <img src={cash} alt="" />
+                  DINHEIRO
+                </button>
+              </div>
+            </PaymentContainer>
+          </div>
 
           <CartContainer>
             {coffeItems.length > 0 ? (
@@ -207,32 +254,6 @@ export function Checkout() {
             </div>
           </CartContainer>
         </div>
-
-        <PaymentContainer>
-          <div>
-            <div className="payment-title">
-              <img src={payment} alt="" />
-              <h2>Endereço de entrega</h2>
-            </div>
-            <h4>
-              O pagamento é feito na entrega. Escolha a forma que deseja pagar
-            </h4>
-          </div>
-          <div className="payment-buttons">
-            <button type="submit" className="payment-button">
-              <img src={creditCard} alt="" />
-              CARTÃO DE CRÉDITO
-            </button>
-            <button type="submit" className="payment-button">
-              <img src={debitCard} alt="" />
-              CARTÃO DE DÉBITO
-            </button>
-            <button type="submit" className="payment-button">
-              <img src={cash} alt="" />
-              DINHEIRO
-            </button>
-          </div>
-        </PaymentContainer>
       </Page>
     </>
   );
