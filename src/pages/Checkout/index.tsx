@@ -14,11 +14,11 @@ import cash from "../../assets/cash-icon.svg";
 import { useMenu } from "../../context/MenuContext";
 import trash from "../../assets/trash-icon.svg";
 import { useState } from "react";
-import { useForm, useFormContext } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 export function Checkout() {
-  const { register, watch, getValues, handleSubmit, setValue } = useForm();
+  const { register, getValues, handleSubmit, setValue } = useForm();
   const { coffeItems, addToCart } = useMenu();
   const [activeButton, setActiveButton] = useState(0);
   const [selectedPayment, setSelectedPayment] = useState("");
