@@ -16,6 +16,7 @@ export const Page = styled.div`
     width: 60%;
     float: left;
     margin-right: 0.3rem;
+    margin-bottom: 1rem;
   }
 `;
 
