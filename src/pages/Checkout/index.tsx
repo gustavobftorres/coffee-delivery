@@ -276,32 +276,32 @@ export function Checkout() {
                       </div>
                     </div>
                     <hr />
+                    <div className="final-info-div">
+                      <div className="info">
+                        <div className="info-titles">
+                          <h4>Total de itens</h4>
+                          <h4>Entrega</h4>
+                          <h1>Total</h1>
+                        </div>
+                        <div className="info-numbers">
+                          <h4>R$ {totalItemsPrice}</h4>
+                          <h4>R$ {deliverPrice}</h4>
+                          <h1>R$ {totalPrice}</h1>
+                        </div>
+                      </div>
+                      <button
+                        className="submit-button"
+                        type="submit"
+                        disabled={coffeItems.length === 0}
+                      >
+                        Finalizar pedido
+                      </button>
+                    </div>
                   </>
                 ))
               ) : (
-                <p>O seu carrinho está vazio.</p>
+                <h2>Adicione itens ao seu carrinho</h2>
               )}
-              <div className="final-info-div">
-                <div className="info">
-                  <div className="info-titles">
-                    <h4>Total de itens</h4>
-                    <h4>Entrega</h4>
-                    <h1>Total</h1>
-                  </div>
-                  <div className="info-numbers">
-                    <h4>R$ {totalItemsPrice}</h4>
-                    <h4>R$ {deliverPrice}</h4>
-                    <h1>R$ {totalPrice}</h1>
-                  </div>
-                </div>
-                <button
-                  className="submit-button"
-                  type="submit"
-                  disabled={coffeItems.length === 0}
-                >
-                  Finalizar pedido
-                </button>
-              </div>
             </CartContainer>
           </div>
         </form>

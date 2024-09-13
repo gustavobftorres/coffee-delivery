@@ -10,6 +10,7 @@ import logo from "../../assets/logo.svg";
 import locationPin from "../../assets/location-pin.svg";
 import yellowCart from "../../assets/yellow-cart-icon.svg";
 import { useNavigate } from "react-router-dom";
+import { LocationComponent } from "../LocationComponent";
 
 interface HeaderProps {
   amount: number;
@@ -17,19 +18,19 @@ interface HeaderProps {
 export function Header(props: HeaderProps) {
   const navigate = useNavigate();
 
-
   return (
     <HeaderContainer>
       <LogoDiv>
-        <img src={logo} alt="" onClick={() => {
-          navigate("/");
-        }} />
+        <img
+          src={logo}
+          alt=""
+          onClick={() => {
+            navigate("/");
+          }}
+        />
       </LogoDiv>
       <ButtonsDiv>
-        <LocationButton type="button">
-          <img src={locationPin} alt="" />
-          Porto Alegre, RS
-        </LocationButton>
+        <LocationComponent />
         <ShopButton
           type="button"
           onClick={() => {
@@ -37,9 +38,7 @@ export function Header(props: HeaderProps) {
           }}
         >
           <img src={yellowCart} alt="" />
-          {props.amount > 0 && (
-            <PopUp>{props.amount}</PopUp>
-          )}
+          {props.amount > 0 && <PopUp>{props.amount}</PopUp>}
         </ShopButton>
       </ButtonsDiv>
     </HeaderContainer>
