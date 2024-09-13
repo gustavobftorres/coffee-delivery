@@ -272,14 +272,14 @@ export function Checkout() {
                         </div>
                       </div>
                       <div className="price-div">
-                        <p>R$ {coffee.price}</p>
+                        <p>R$ {coffee.price * coffee.quantity}</p>
                       </div>
                     </div>
                     <hr />
                   </>
                 ))
               ) : (
-                <p>Your cart is empty.</p>
+                <p>O seu carrinho está vazio.</p>
               )}
               <div className="final-info-div">
                 <div className="info">
